@@ -8,17 +8,18 @@
 */
 function isAnagram(str1, str2) {
 
+  function sortString(str) {
+      console.log("Sorting:", str);   // 👈 SEE function running
+      return str.toLowerCase().split('').sort().join('');
+  }
+
   if (str1.length !== str2.length) {
       return false;
   }
 
-
-  function sortString(str) {
-      return str.toLowerCase().split('').sort().join('');
-  }
-
-
   return sortString(str1) === sortString(str2);
 }
 
-module.exports = isAnagram;
+console.log(isAnagram("Fried", "Fired"));
+;
+//
