@@ -1,5 +1,6 @@
 /*
-  Write a function `compressWords` which takes an array of strings as input and returns a new array with consecutive duplicate elements compressed. If an element appears consecutively, it is replaced by the element followed by the count of its occurrences.
+  Write a function `compressWords` which takes an array of strings as input and returns a new array with consecutive duplicate elements compressed. 
+  If an element appears consecutively, it is replaced by the element followed by the count of its occurrences.
 
   Example:
   - Input: ["apple", "apple", "banana", "banana", "banana", "cherry", "apple", "apple"]
@@ -21,10 +22,27 @@
   - `npm run test-compressWord`
 */
 
-
 function compressWords(arr) {
-  // Your code here
+  if (arr.length === 0) return [];
+
+  const result = [];
+  let count = 1;
+
+  for (let i = 1; i <= arr.length; i++) {
+    if (arr[i] === arr[i - 1]) {
+      count++;
+    } else {
+      if (count > 1) {
+        result.push(arr[i - 1] + count);
+      } else {
+        result.push(arr[i - 1]);
+      }
+      count = 1;
+    }
+  }
+
+  return result;
 }
 
-
 module.exports = compressWords;
+
